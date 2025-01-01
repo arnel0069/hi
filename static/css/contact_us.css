@@ -36,7 +36,6 @@ label {
     font-size: 22px;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #2c3e50;
     align-items: left;}
 
 input[type="text"], input[type="email"], textarea {
