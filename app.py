@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
+
+# Database Configuration
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///site.db')  # Use SQLite for development
+db = SQLAlchemy(app)
 
 @app.route('/')
 def home():
@@ -22,12 +29,21 @@ def contact():
         email = request.form['email']
         message = request.form['message']
         
-        # Process the data (e.g., send an email or store it in a database)
-        # For simplicity, let's just print the data in the console
-        print(f"Received message from {name} ({email}): {message}")
-
-        # Optionally, send a confirmation or success message
-        return redirect(url_for('thank_you'))  # Redirect to a thank you page
+        # Create a new Message record in the database
+        new_message = Message(name=name, email=email, message=message)
+        
+        try:
+            # Add and commit the transaction to the database
+            db.session.add(new_message)
+            db.session.commit()
+            print(f"Message from {name} ({email}) stored successfully!")
+        except Exception as e:
+            db.session.rollback()
+            print(f"Error storing message: {e}")
+            return render_template('contact_us.html', error="There was an error processing your request.")
+        
+        # Redirect to a thank you page
+        return redirect(url_for('thank_you'))
 
     return render_template('contact_us.html')
 
@@ -35,5 +51,19 @@ def contact():
 def thank_you():
     return render_template('thank_you.html')
 
+# Define the Message model to store form data
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return f'<Message {self.id}, {self.name}, {self.email}>'
+
+# Create the database tables (if they don't exist yet)
+with app.app_context():
+    db.create_all()
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=True)  # The use_reloader=True forces reloading on code changes
