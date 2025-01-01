@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Destinations | Incredible India{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/destinations.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section class="destinations">
+        <h2>Explore Incredible Destinations</h2>
+        <div class="destination-gallery">
+            <div class="destination-item panel">
+                <img src="{{ url_for('static', filename='images/3.jpg') }}" alt="Destination 1">
+                <h3>Goa</h3>
+                <p>Relax on the beaches and experience the vibrant culture of Goa.</p>
+            </div>
+            <div class="destination-item panel">
+                <img src="{{ url_for('static', filename='images/4.jpg') }}" alt="Destination 2">
+                <h3>Jaipur</h3>
+                <p>Discover the historic beauty and grandeur of the Pink City.</p>
+            </div>
+            <div class="destination-item panel">
+                <img src="{{ url_for('static', filename='images/6.jpg') }}" alt="Destination 3">
+                <h3>Agra</h3>
+                <p>Experience the timeless beauty of the Taj Mahal, a UNESCO World Heritage Site.</p>
+            </div>
+            <div class="destination-item panel">
+                <img src="{{ url_for('static', filename='images/8.jpg') }}" alt="Destination 4">
+                <h3>Varanasi</h3>
+                <p>Experience the spiritual heart of India along the Ganges River.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

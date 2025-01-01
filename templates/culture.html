@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Culture | Incredible India{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/culture.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section class="culture">
+        <h2>Explore India's Rich Culture</h2>
+        <p>India's culture is a melting pot of traditions, languages, arts, and festivals.</p>
+        
+        <h3>Famous Festivals</h3>
+        <ul class="festival-list">
+            <li>
+                <img src="{{ url_for('static', filename='images/diwali.jpg') }}" alt="Diwali - Festival of Lights">
+                <p>Diwali - Festival of Lights</p>
+            </li>
+            <li>
+                <img src="{{ url_for('static', filename='images/holi1.jpg') }}" alt="Holi - Festival of Colors">
+                <p>Holi - Festival of Colors</p>
+            </li>
+            <li>
+                <img src="{{ url_for('static', filename='images/durgapuja.jpg') }}" alt="Durga Puja">
+                <p>Durga Puja</p>
+            </li>
+            <li>
+                <img src="{{ url_for('static', filename='images/onam.jpg') }}" alt="Onam">
+                <p>Onam</p>
+            </li>
+            <li>
+                <img src="{{ url_for('static', filename='images/navratri.jpg') }}" alt="Navratri">
+                <p>Navratri</p>
+            </li>
+        </ul>
+    </section>
+{% endblock %}

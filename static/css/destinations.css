@@ -1,0 +1,56 @@
+/* destinations.css */
+.destinations {
+    text-align: center;
+    padding: 2rem;
+}
+
+.destination-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.destination-item {
+    border: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-item:hover {
+    transform: scale(1.05);
+}
+
+.destination-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.destination-item h3 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.destination-item p {
+    color: #666;
+}
+
+/* Styles for the active state */
+.destination-item.active {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-color: #0078d4;
+    background-color: #eef7ff;
+}
+
+.destination-item.active h3 {
+    color: #0056a3;
+}
+
+.destination-item.active p {
+    color: #004080;
+}

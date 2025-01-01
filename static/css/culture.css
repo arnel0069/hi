@@ -1,0 +1,40 @@
+.culture {
+    text-align: center;
+    padding: 2rem;
+}
+
+.festival-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.festival-list li {
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.festival-list li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.festival-list img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.festival-list p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+}
