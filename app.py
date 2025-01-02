@@ -64,6 +64,3 @@ class Message(db.Model):
 # Create the database tables (if they don't exist yet)
 with app.app_context():
     db.create_all()
-
-if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)  # The use_reloader=True forces reloading on code changes
